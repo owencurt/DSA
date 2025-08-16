@@ -6,17 +6,14 @@ class Solution(object):
         """
         vowels = set('AEIOUaeiou')
         s_list = list(s)
-        left, right = 0, len(s) - 1
+        l, r = 0, len(s) - 1
 
-        while left < right:
-            if s_list[left] not in vowels:
-                left += 1
-            elif s_list[right] not in vowels:
-                right -= 1
-            else:
-                s_list[right], s_list[left] = s_list[left], s_list[right]
-                left += 1
-                right -= 1
+        while l < r:
+            if s[l] not in vowels:
+                l += 1
+            elif s[r] not in vowels:
+                r -= 1
+            elif s[l] and s[r] in vowels:
+                s_list[l], s_list[r] = s_list[r], s_list[l]
+                l, r = l+1, r-1
         return "".join(s_list)
-
-
